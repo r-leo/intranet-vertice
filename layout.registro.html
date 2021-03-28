@@ -1,0 +1,30 @@
+<!-- Layout de registro: -->
+
+<?php include('config.php'); ?>
+
+<!-- Barra de navegación -->
+<ul class="topnav">
+  <li><a href="intranet.php"><img src="img/logo.png"></a></li>
+</ul>
+
+<!-- Contenidos -->
+<div class="contenedor">
+  <div class="fila">
+    <div class="col-2">
+      <div class="card">
+        <h3 class="center">{@nombre}</h3>
+        <p class="center"><img class="avatar" src="{@avatar}"></p>
+        <p class='center'><a href='salir.php'><i class='fa fa-sign-out'></i>Salir del sistema</a></p>
+      </div>
+    </div>
+    <div class="col-6">
+      {@contenido}
+    </div>
+    <div class="col-2">
+      <div class="card-dark responsive_hide">
+        <p class="center size-large"><i class="fa fa-calendar inline"></i></p>
+        <p class="center">Hoy es<br><span class="bold">{@fecha_hoy}</span></p>
+      </div>
+    </div>
+  </div>
+</div>

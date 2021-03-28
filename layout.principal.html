@@ -1,0 +1,115 @@
+<!-- Layout principal del intranet: -->
+
+<script>
+  //window.addEventListener("hashchange", function() { scrollBy(0, -60) });
+</script>
+
+<!-- Barra de navegación -->
+
+<nav class="navbar fixed-top navbar-expand-lg navbar-dark bg-dark">
+  <a class="navbar-brand m-0 p-0 border-secondary border-right pr-3 mr-3" href="intranet.php">
+    <img src="img/logo.png" height="15" class="d-inline-block align-middle">
+  </a>
+  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent">
+    <span class="navbar-toggler-icon"></span>
+  </button>
+  <div class="collapse navbar-collapse" id="navbarSupportedContent">
+    <ul class="nav navbar-nav nav-fill">
+      {@links_alumnos}
+      {@links_coordinadores}
+    </ul>
+  </div>
+</nav>
+
+<div class="container-fluid">
+  <div class="row">
+
+    <!-- Columna izquierda -->
+    <div class="col-md-3 col-lg-2 bg-light border-right border-bottom text-dark">
+      <div id="panelResponsivo" class="container-fluid d-block d-sm-block d-md-none pt-3 pb-2">
+        <div class="row">
+          <div class="col-8 text-left m-0 p-0">
+            <img class="avatar_responsive" src="{@avatar}">
+            <div class=avatar_title_responsive>
+              <p class="m-0 p-0">{@nombre}</p>
+              <small class="m-0 p-0">{@estatus}</small>
+            </div>
+          </div>
+          <div class="col-4 text-right m-0 p-2">
+            <button class="btn btn-secondary btn-sm dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+              Más...
+            </button>
+            <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+              <a class="dropdown-item" href="?d=perfil">Editar perfil</a>
+              <a class="dropdown-item" href="salir.php">Salir</a>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div id="panelPrincipal" class="d-none d-md-block pt-5 pb-5">
+        <div class="text-center">
+          <h5>{@nombre}</h5>
+          <img class="avatar" src="{@avatar}">
+          <p>{@generacion}&ordm; generación</p>
+          <a href="?d=perfil"><button class="btn btn-outline-secondary btn-sm">Editar perfil</button></a>
+        </div>
+        <div class="mt-4">
+          <hr>
+          <small class="text-muted">Periodo actual</small><br>
+          {@periodo}
+          <hr>
+          <small class="text-muted">Estatus en Vértice</small><br>
+          {@estatus}
+          <hr>
+          <a href="salir.php" class="text-center">Salir del sistema</a>
+        </div>
+      </div>
+    </div>
+
+    <!-- Resto del contenido -->
+    <div class="col-md-9 col-lg-8 p-3 p-md-5">
+      {@contenido}
+      <div style="height: 100px;"></div>
+    </div>
+
+    <!-- Columnda derecha -->
+    <div class="col-2 d-none d-lg-block border-left text-dark pt-5 pb-5">
+      <div class="position-fixed">
+        <h5>Navegación rápida</h5>
+        <ul class="list-group list-group-flush" id="navegacion_rapida">
+          <a class="list-group-item list-group-item-action elemento_lateral" href="#" id="ancla_inicio">Principio de página</a>
+        </ul>
+      </div>
+    </div>
+  </div>
+</div>
+
+<script>
+  var anclas = $("h3[id^='navegador_']");
+  for (var i = 0; i < anclas.length; i++) {
+    $("#navegacion_rapida").append("<a class='list-group-item list-group-item-action elemento_lateral' href='#" + anclas[i].id + "'>" + $('#' + anclas[i].id).text() + "</a>");
+  }
+  $("ancla_inicio").click(function(){
+    $("body").scrollTop(0);
+  });
+  /*$(".elemento_lateral").click(function(){
+    $(".elemento_lateral").removeClass("active");
+    $(this).addClass("active");
+  });*/
+</script>
+
+<footer class="footer bg-dark">
+  <div class="container-fluid">
+    <div class="row">
+      <div class="col-2 d-none d-md-block text-center">
+        <span class="text-muted">Intranet Vértice</span>
+      </div>
+      <div class="col-md-8 text-center">
+        <span class="text-muted">&copy; <?php echo date("Y"); ?> Rodrigo Leo</span>
+      </div>
+      <div class="col-2 d-none d-md-block text-center">
+        <span class="text-muted">&copy; <?php echo date("Y"); ?> Rodrigo Leo</span>
+      </div>
+    </div>
+  </div>
+</footer>
